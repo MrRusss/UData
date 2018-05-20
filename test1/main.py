@@ -1,32 +1,25 @@
-n = int(input('number row'))
-k = int(input('number column'))
-a = []
-b = []
-for i in range(n):
-    a.append([])
-    for j in range(k):
-        a[i].append(input())
-for r in a:
-    print(a)
-for i in range(k):
-    b.append([])
-    for j in range(n):
-        b[i].append(int(input()))
-for r in b:
-    print(b)
-s=[]
-def mulplus(i,j):
-    for i in range(n):
-        for j in range(k):
-            sum=0
-            for g in range()
-            mulplus += a[i][j]*b[j][i]
-    return mulplus
+import gauss
+import input_output as io
+import functions as af
+import LU
 
-def mul():
-    mul = 1
-    for i in range(k):
-        for j in range(1,n):
-            mul = mulplus(i,j)
-
-s = mulplus(n,k)
+A = io.Input_matrix()
+b = io.Input_matrix()
+af.swap_SLAR(A, b)
+x = gauss.Gauss(A, b)
+if type(x) == int:
+    print("The system is 'virodjena', it happen's on the line : " +
+          str(-x) + " iteration")
+else:
+    io.print_matrix(x, "answer: ")
+    io.print_matrix(af.subtraction(af.multiplying(A, x), b), "r = A*x - b = ")
+(L, U) = LU.Factorization(A)
+if L == False:
+    print("matrix can't be factorized")
+    quit(-1)
+io.print_matrix(L, "Matrix L:")
+io.print_matrix(U, "Matrix U:")
+io.print_matrix(af.multiplying(L, U), "L*U = ")
+B = LU.Inversed_matrix(L, U)
+io.print_matrix(B, "A^(-1) = ")
+print("Number of conditionality = " + str(round(LU.matrix_norm(A)*LU.matrix_norm(B), 3)))

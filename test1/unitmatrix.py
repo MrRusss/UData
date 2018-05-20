@@ -24,7 +24,7 @@ def multiplying(A,B):
 A = input_matrix(2, 3)
 B = input_matrix(3, 1)
 C = multiplying(A, B)
-D = copy.deepcopy(C)
+D = copy.copy(C)
 print(A)
 print(B)
 print(C)
